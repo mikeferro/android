@@ -128,8 +128,13 @@ public class register extends AppCompatActivity {
             mAuth.createUserWithEmailAndPassword(email, hashPass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful())
+                    if (task.isSuccessful()){
                         Log.i("Teste", task.getResult().getUser().getUid());
+                        SaveUser();
+                    }
+
+
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -141,6 +146,36 @@ public class register extends AppCompatActivity {
 
         }
     }
+
+    private void SaveUser() {
+        String filename = UUID.randomUUID().toString();
+        final StorageReference ref= FirebaseStorage.getInstance().getReference("/images" + filename);
+        ref.putFile(CaminhoFoto).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Log.i("teste", uri.toString());
+
+                        String uid =mAuth.getUid();
+                        String fotoperfil = uri.toString();
+                        String username = username.ge
+
+                        User user= new User(  uid, username, fotoperfil);
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e("teste", e.getMessage(), e);
+            }
+        });
+
+        //final DatabaseReference ref = mDatabase("/image" + filename);
+    }
+
 
 
     private String hashPassword(String pass) {
