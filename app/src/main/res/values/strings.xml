@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">chatv3</string>
+    <string name="contactos">contactos</string>
+    <string name="Logout">Logout</string>
+</resources>

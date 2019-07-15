@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "474861504710",
+    "firebase_url": "https://chatv3-884c4.firebaseio.com",
+    "project_id": "chatv3-884c4",
+    "storage_bucket": "chatv3-884c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474861504710:android:ffed2fb94551bf03",
+        "android_client_info": {
+          "package_name": "com.example.chatv3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474861504710-0arqrks8aqei0lak1mfhpdqtfuqt6fir.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCv3rdtW-RHjxFWa0j5C0Kp2R7gaG-TaA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474861504710-0arqrks8aqei0lak1mfhpdqtfuqt6fir.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
