@@ -79,6 +79,7 @@ public class register extends AppCompatActivity {
         });
 
 
+
     }
 
     @Override
@@ -115,9 +116,9 @@ public class register extends AppCompatActivity {
     public void onClickRegister(View view) {
 
 
-        final String email = this.email.getText().toString();
+        String email = this.email.getText().toString();
         String pass = this.password.getText().toString();
-        final String username = this.username.getText().toString();
+        String username = this.username.getText().toString();
         String hashPass = hashPassword(pass);
 
         if (username == null || username.isEmpty() || email == null || email.isEmpty() || pass == null || pass.isEmpty()) {
@@ -160,9 +161,24 @@ public class register extends AppCompatActivity {
 
                         String uid =mAuth.getUid();
                         String fotoperfil = uri.toString();
-                        String username = username.ge
 
-                        User user= new User(  uid, username, fotoperfil);
+                        User user= new User(email,uid,username,fotoperfil);
+
+                        
+                        mDatabase.child("users").child(uid).setValue(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.i("teste", documentReference.getId());
+                            }
+                        })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.i("teste", e.getMessage());
+                                    }
+                                });
+
                     }
                 });
             }
