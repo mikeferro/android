@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class messagens extends AppCompatActivity {
+public class Messagens extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class messagens extends AppCompatActivity {
     {
         if(FirebaseAuth.getInstance().getUid()==null)
         {
-            Intent intent = new Intent(messagens.this,MainActivity.class);
+            Intent intent = new Intent(Messagens.this,MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
@@ -35,13 +35,17 @@ public class messagens extends AppCompatActivity {
         return true;
     }
 
-      /*@Override
+      @Override
     public boolean onOptionsItemSelected(MenuItem item) {
       switch(item.getItemId())
         {
             case R.id.contactos:
                 break;
-            case R.id
+            case R.id.Logout:
+                FirebaseAuth.getInstance().signOut();
+                verificarSigin();
+                break;
         }
-    }*/
+        return  super.onOptionsItemSelected(item);
+    }
 }

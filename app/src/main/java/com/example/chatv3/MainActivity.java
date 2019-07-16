@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             getUser(user.getUid());
                             Toast.makeText(MainActivity.this,"Parabéns!",Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplication(),messagens.class);
+                            Intent intent = new Intent(getApplication(), Messagens.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickRegister(View view) {
-        Intent intent = new Intent(getApplication(), register.class);
+        Intent intent = new Intent(getApplication(), Register.class);
         startActivity(intent);
 
 

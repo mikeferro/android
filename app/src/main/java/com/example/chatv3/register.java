@@ -28,8 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -41,7 +40,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
-public class register extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
     private EditText email, password, username;
     private FirebaseAuth mAuth;
@@ -164,12 +163,14 @@ public class register extends AppCompatActivity {
 
                         User user= new User(email,uid,username,fotoperfil);
 
-                        
-                        mDatabase.child("users").child(uid).setValue(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+                        mDatabase.child("users").child(uid).setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
 
                             @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.i("teste", documentReference.getId());
+                            public void onSuccess(Void aVoid) {
+                                Log.i("gravar", mDatabase.getKey());
+                                Intent intent = new Intent(getApplication(), Messagens.class);
+                                startActivity(intent);
                             }
                         })
                                 .addOnFailureListener(new OnFailureListener() {
